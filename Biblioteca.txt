@@ -1,0 +1,102 @@
+public ResponseEntity<?> crear(@RequestBody Prestamo prestamo) {
+		Integer prestamos = prestamoService.consul(prestamo.idCliente);
+		String messeger = null;
+
+		if (prestamos >=4) {
+			messeger = "ya tienes 3 libros prestados";
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messeger);
+		} else {
+			messeger = "prestamo realizado";
+			prestamoService.crear(prestamo);
+			return ResponseEntity.status(HttpStatus.OK).body("prestamo creado exitosamente");
+		}
+
+tmabien funciona per osale el msj de que ya tiene 3 libros y crea el prestamo 
+
+
+	public ResponseEntity<?> crear(@RequestBody Prestamo prestamo) {
+		prestamoService.crear(prestamo);
+		Integer prestamos = prestamoService.consul(prestamo.idCliente);
+		String messeger = null;
+
+		if (prestamos >=3) {
+			messeger = "ya tienes 3 libros prestados";
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messeger);
+		} else {
+			prestamoService.crear(prestamo);
+			return ResponseEntity.status(HttpStatus.OK).body("prestamo creado exitosamente");
+
+
+
+asi es el metodo ahora 
+	public Prestamo consul(Integer id, Date fecha) {
+		Prestamo prestamo = iprestamoRepo.getPrestamo(id, fecha);
+		return prestamo;
+
+
+
+asi estaba antes en la anterior consulta 
+
+public Integer consul(Integer id) {
+		Integer prestamo = iprestamoRepo.getPrestamo(id);
+		return prestamo;
+
+
+
+este post mapping esta bien me permitio hacer dos cosas verificar los prestamos del usuario por id y si tiene menos de 3 prestamos hacer el prestamo 
+
+@PostMapping("/crear")
+	public ResponseEntity<?> crear(@RequestBody Prestamo prestamo) {
+		
+		Integer prestamos = prestamoService.consul(prestamo.idCliente);
+		String messeger = null;
+
+		if (prestamos !=null &&prestamos>=3) {
+			messeger = "ya tienes 3 libros prestados";
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messeger);
+		}
+			prestamoService.crear(prestamo);
+			return ResponseEntity.status(HttpStatus.OK).body("prestamo creado exitosamente");
+
+BIEN 
+para  consultar si tene 3 prestamos retorna un msj y si no crea el prestamo 
+	
+	//@PostMapping("/crear")
+	//public ResponseEntity<?> crear(@RequestBody Prestamo prestamo) {
+		//Integer prestamos = prestamoService.consul(prestamo.idCliente);
+		//String messeger = null;
+		
+		/*List<Prestamo> prestamoList=prestamoService.prestamo(prestamo.idCliente);
+		 Date fechaActual = new Date();
+
+		if (prestamos !=null &&prestamos>=3 && !prestamoList.isEmpty() && (fechaActual.compareTo(prestamoList.get(0).fechaPrestamo)==0)) {
+			messeger = "ya tienes 3 libros prestados";
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messeger);
+		}
+			prestamoService.crear(prestamo);
+			return ResponseEntity.status(HttpStatus.OK).body("prestamo creado exitosamente");
+
+
+
+
+@PostMapping("/crear")
+			public ResponseEntity<?> crear(@RequestBody Prestamo prestamo) {
+			Integer prestamos = prestamoService.consul(prestamo.idCliente);
+			String messeger = null;
+
+			Date fechaUltimoPrestamo = prestamoService.consultafecha(prestamo.idCliente);
+			Date fechaActual = new Date();
+			
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			String fecha=formato.format(fechaActual);
+	
+			// consultamos que si el usuario es nuevo o es un usuario viejo no tenga mas de tres prestamos y que la fecha del ultimo prestamo no sea igual a hoy
+		if (prestamos !=null &&prestamos>=3  || fecha.equalsIgnoreCase(fechaUltimoPrestamo.toString())) {
+			messeger = "ya tienes 3 libros prestados o ya tienes un prestamo hoy";
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messeger);
+		}
+			prestamoService.crear(prestamo);
+			return ResponseEntity.status(HttpStatus.OK).body("prestamo creado exitosamente");
+		}
+	
+		
