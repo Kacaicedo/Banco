@@ -23,7 +23,7 @@ public class AsesorController {
 	AsesorService asesorService;
 
     @PostMapping("/crearAsesor")
-	public ResponseEntity<?> crearAsesor(@RequestBody Asesor asesor) {
+	private ResponseEntity<?> crearAsesor(@RequestBody Asesor asesor) {
 		asesorService.crear(asesor);
 	return ResponseEntity.status(HttpStatus.OK).body("registro creado");
 	}

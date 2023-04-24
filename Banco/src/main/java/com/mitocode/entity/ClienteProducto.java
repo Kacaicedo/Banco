@@ -9,17 +9,38 @@ import lombok.Setter;
 
 @Entity
 
-@Getter
-@Setter
+
 @Table(name = "cliente_productof")
 public class ClienteProducto {
 
 	@Id	
 	 
 	 @Column(name="id_cliente")
-	public Integer idCliente;
+	private Integer idCliente;
 	
 	
 	@Column(name="id_productof")
-	public Integer idProductoF;
+	private Integer idProductoF;
+
+
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+
+
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
+
+
+	public Integer getIdProductoF() {
+		return idProductoF;
+	}
+
+
+	public void setIdProductoF(Integer idProductoF) {
+		this.idProductoF = idProductoF;
+	}
+	
+	
 }

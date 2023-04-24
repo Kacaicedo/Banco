@@ -12,39 +12,120 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-
-@Getter
-@Setter
 @Table(name = "credito")
 public class Credito {
 
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	public Integer idCr;
+	private Integer idCr;
 	
 	@Column(name="fecha")
-	public Date fechaCr;
+	private Date fechaCr;
 	
 	@Column(name="valor")
-	public Integer valorCr;
+	private Integer valorCr;
 	
 	@Column(name="cuota_mes")
-	public Integer cuotaCr;
+	private Integer cuotaCr;
 	
 	@Column(name="fecha_pagomes")
-	public Date fechaPagoCr;
+	private Date fechaPagoCr;
 	
 	@Column(name="interes_dia_mora")
-	public Integer interesDiaCr;
+	private Integer interesDiaCr;
 	
 	@Column(name="fecha_pagofinal")
-	public Date pagoFinalCr;
+	private Date pagoFinalCr;
 	
 	@Column(name="duracion" , length=50)
-	public String duracionCr;
+	private String duracionCr;
 	
 	@Column(name="id_tipocredito")
-	public Integer idTipoCr;
+	private Integer idTipoCr;
+	
+	@Column(name="numcuota")
+	private Integer numeroCuota;
+
+	public Integer getIdCr() {
+		return idCr;
+	}
+
+	public void setIdCr(Integer idCr) {
+		this.idCr = idCr;
+	}
+
+	public Date getFechaCr() {
+		return fechaCr;
+	}
+
+	public void setFechaCr(Date fechaCr) {
+		this.fechaCr = fechaCr;
+	}
+
+	public Integer getValorCr() {
+		return valorCr;
+	}
+
+	public void setValorCr(Integer valorCr) {
+		this.valorCr = valorCr;
+	}
+
+	public Integer getCuotaCr() {
+		return cuotaCr;
+	}
+
+	public void setCuotaCr(Integer cuotaCr) {
+		this.cuotaCr = cuotaCr;
+	}
+
+	public Date getFechaPagoCr() {
+		return fechaPagoCr;
+	}
+
+	public void setFechaPagoCr(Date fechaPagoCr) {
+		this.fechaPagoCr = fechaPagoCr;
+	}
+
+	public Integer getInteresDiaCr() {
+		return interesDiaCr;
+	}
+
+	public void setInteresDiaCr(Integer interesDiaCr) {
+		this.interesDiaCr = interesDiaCr;
+	}
+
+	public Date getPagoFinalCr() {
+		return pagoFinalCr;
+	}
+
+	public void setPagoFinalCr(Date pagoFinalCr) {
+		this.pagoFinalCr = pagoFinalCr;
+	}
+
+	public String getDuracionCr() {
+		return duracionCr;
+	}
+
+	public void setDuracionCr(String duracionCr) {
+		this.duracionCr = duracionCr;
+	}
+
+	public Integer getIdTipoCr() {
+		return idTipoCr;
+	}
+
+	public void setIdTipoCr(Integer idTipoCr) {
+		this.idTipoCr = idTipoCr;
+	}
+
+	public Integer getNumeroCuota() {
+		return numeroCuota;
+	}
+
+	public void setNumeroCuota(Integer numeroCuota) {
+		this.numeroCuota = numeroCuota;
+	}
+	
 }
 

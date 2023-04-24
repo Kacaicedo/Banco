@@ -13,34 +13,99 @@ import lombok.Setter;
 
 @Entity
 
-@Getter
-@Setter
 @Table(name = "cliente")
 public class Cliente {
 	
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	public Integer idC;
+	private Integer idC;
 	
 	@Column(name="edad")
-	public Integer edadC;
+	private Integer edadC;
 	
 	@Column(name="cedula")
-	public BigInteger cedulaC ;
+	private BigInteger cedulaC ;
 	
 	@Column(name="nombre",  length=50)
-	public String nombreC;
+	private String nombreC;
 	
 	@Column(name="ciudad", length=50)
-	public String ciudadC;
+	private String ciudadC;
 	
 	@Column(name="direccion", length=50)
-	public String direccionC;
+	private String direccionC;
 	
 	@Column (name="contacto")
-	public BigInteger contactoC;
+	private BigInteger contactoC;
 	
 	@Column(name="correo", length=50)
-	public String correoC;
+	private String correoC;
+
+	public Integer getIdC() {
+		return idC;
+	}
+
+	public void setIdC(Integer idC) {
+		this.idC = idC;
+	}
+
+	public Integer getEdadC() {
+		return edadC;
+	}
+
+	public void setEdadC(Integer edadC) {
+		this.edadC = edadC;
+	}
+
+	public BigInteger getCedulaC() {
+		return cedulaC;
+	}
+
+	public void setCedulaC(BigInteger cedulaC) {
+		this.cedulaC = cedulaC;
+	}
+
+	public String getNombreC() {
+		return nombreC;
+	}
+
+	public void setNombreC(String nombreC) {
+		this.nombreC = nombreC;
+	}
+
+	public String getCiudadC() {
+		return ciudadC;
+	}
+
+	public void setCiudadC(String ciudadC) {
+		this.ciudadC = ciudadC;
+	}
+
+	public String getDireccionC() {
+		return direccionC;
+	}
+
+	public void setDireccionC(String direccionC) {
+		this.direccionC = direccionC;
+	}
+
+	public BigInteger getContactoC() {
+		return contactoC;
+	}
+
+	public void setContactoC(BigInteger contactoC) {
+		this.contactoC = contactoC;
+	}
+
+	public String getCorreoC() {
+		return correoC;
+	}
+
+	public void setCorreoC(String correoC) {
+		this.correoC = correoC;
+	}
+	
+	
+	
 }

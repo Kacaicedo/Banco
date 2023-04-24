@@ -14,6 +14,9 @@ public class TipoTargetaService {
 	public void crear (TipoTargeta tipoTargeta) {
 		itipoTargetaRepo.save(tipoTargeta);
 	}
+	
+	
+
 	public void Eliminar (TipoTargeta tipoTargeta) {
 		itipoTargetaRepo.delete(tipoTargeta);
 	}

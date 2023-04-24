@@ -8,36 +8,91 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+
 
 @Entity
 
-@Getter
-@Setter
 @Table(name = "targeta")
 public class Targeta {
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	public Integer id;
+	private Integer id;
 	
 	@Column(name="nombre",  length=50)
-	public String nombre;
+	private String nombre;
 	
 	@Column(name="cupo_aprobado")
-	public Integer cupoAprobado;
+	private Integer cupoAprobado;
 	
 	@Column(name="fecha_pagomensual")
-	public Date fechaPago;
+	private Date fechaPago;
 	
 	@Column(name="interes_dia_mora")
-	public Integer interesDia;
+	private Integer interesDia;
 	
 	@Column(name="fecha_vencimiento")
-	public Date fechaVencimiento;
+	private Date fechaVencimiento;
 	
 	@Column(name="id_tipotargeta")
-	public Integer idTipotargeta;
+	private Integer idTipotargeta;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Integer getCupoAprobado() {
+		return cupoAprobado;
+	}
+
+	public void setCupoAprobado(Integer cupoAprobado) {
+		this.cupoAprobado = cupoAprobado;
+	}
+
+	public Date getFechaPago() {
+		return fechaPago;
+	}
+
+	public void setFechaPago(Date fechaPago) {
+		this.fechaPago = fechaPago;
+	}
+
+	public Integer getInteresDia() {
+		return interesDia;
+	}
+
+	public void setInteresDia(Integer interesDia) {
+		this.interesDia = interesDia;
+	}
+
+	public Date getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+
+	public Integer getIdTipotargeta() {
+		return idTipotargeta;
+	}
+
+	public void setIdTipotargeta(Integer idTipotargeta) {
+		this.idTipotargeta = idTipotargeta;
+	}
+	
+	
 	
 }

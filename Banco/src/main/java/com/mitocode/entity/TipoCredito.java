@@ -11,16 +11,33 @@ import lombok.Setter;
 
 @Entity
 
-@Getter
-@Setter
 @Table(name = "tipo_credito")
 public class TipoCredito {
 
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	public Integer id;
+	private Integer id;
 	
 	@Column(name="nombre",  length=50)
-	public String nombre;
+	private String nombre;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	
+	
 }

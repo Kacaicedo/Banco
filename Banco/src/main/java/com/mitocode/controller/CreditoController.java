@@ -26,25 +26,22 @@ public class CreditoController {
 	 protected ResponseEntity<?> crearCredito(@RequestParam  (name="id", required= true)Integer id,@RequestBody Credito credito  ){
 	 //con este consul edad realizo el IF si pongo el programa en DBUG ME VA A PARECER LA EDAD QUE TIENE EL CLIENTE A LA CUAL ACCEDI
 	  //DESDE EL REPOSITORY Y LUEGO EN EL SERVICE 
-	  Integer consultaEdad= creditoService.consultarId(id
-			  );
+	  Integer consultaEdad= creditoService.consultarId(id);
 	  Integer Cuotam = creditoService.Cuota(id);
 	  String messeger = null;
 	  
 	  if(consultaEdad < 18) {
 		  messeger ="eres menor de edad";
 		  return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messeger);
-			 // if(consultaEdad < 18&& credito.idCr == null && Cuotam != 15000) {	
-			
-	
+				
 	  }else {
-		  if(credito.idCr != null && Cuotam != 15000) {
-			  messeger = "no se puede realizar pago";
-			  return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messeger);
+		  if(credito.idCr != null && Cuotam <= credito.cuotaCr || Cuotam > credito.cuotaCr) {
+			  creditoService.pagarcuota(credito);
+			  return ResponseEntity.status(HttpStatus.OK).body("Pago realizado");
 	}
 	}
 	  creditoService.crear(credito);
-		return ResponseEntity.status(HttpStatus.OK).body("operación exitosa");
+		return ResponseEntity.status(HttpStatus.OK).body("Credito creado");
 }
 }
 	

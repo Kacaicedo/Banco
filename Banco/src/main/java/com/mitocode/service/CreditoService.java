@@ -12,6 +12,11 @@ public class CreditoService {
 	public void crear(Credito credito) { 
 		icreditoRepo.save(credito);
 	}
+	public void pagarcuota(Credito credito) { 
+		icreditoRepo.save(credito);
+		
+	}
+	
 	public Integer edades (Integer id) {
 		Integer edad =icreditoRepo.getEdades(id);
 		return edad;
@@ -24,6 +29,12 @@ public class CreditoService {
 	public Integer consultarId (Integer id) {	
 		Integer  credito= icreditoRepo.getEdades(id);
 		return credito;
+		
+	}
+	
+	
+	
+	
 	//public Integer consultaEdad (Integer id) {
 		//Integer creditos = icreditoRepo.getEdadCliente(id);
 		//return creditos;
@@ -34,7 +45,7 @@ public class CreditoService {
 		// TODO Auto-generated method stub
 		
 	
-		}
+	
 	
 	
 		// TODO Auto-generated method stub

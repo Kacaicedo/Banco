@@ -12,30 +12,88 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+
 @Table(name = "asesor")
 public class Asesor {
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	public Integer id;
+	private Integer id;
 
 	@Column(name="cedula")
-	public BigInteger cedula ;
+	private BigInteger cedula ;
 	
 	@Column(name="nombre",  length=50)
-	public String nombre;
+	private String nombre;
 	
 	@Column(name="ciudad", length=50)
-	public String ciudad;
+	private String ciudad;
 	
 	@Column(name="direccion", length=50)
-	public String direccion;
+	private String direccion;
 	
 	@Column (name="contacto")
-	public BigInteger contacto;
+	private BigInteger contacto;
 	
 	@Column(name="correo", length=50)
-	public String correo;
+	private String correo;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public BigInteger getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(BigInteger cedula) {
+		this.cedula = cedula;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public BigInteger getContacto() {
+		return contacto;
+	}
+
+	public void setContacto(BigInteger contacto) {
+		this.contacto = contacto;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	
+	
+	
 }
