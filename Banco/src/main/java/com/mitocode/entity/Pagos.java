@@ -56,8 +56,8 @@ public class Pagos {
 		return cuotaPagar;
 	}
 
-	public void setCuotaPagar(Integer cuotaPagar) {
-		this.cuotaPagar = cuotaPagar;
+	public Integer setCuotaPagar(Integer cuotaPagar) {
+		return this.cuotaPagar = cuotaPagar;
 	}
 
 	public Date getFecha() {

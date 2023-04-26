@@ -19,12 +19,22 @@ public class PagosService {
 	public void crear(Pagos pagos) { 
 		ipagosRepo.save(pagos);
 		}
-		public Integer Consultacuota (Integer idCredito) {
-		Integer Consultacuotas= ipagosRepo.getCantCuotas(idCredito);
-		return Consultacuotas;
+	
+	public Integer valormensual (Integer idCredito) {
+		Integer valorpagomensual= ipagosRepo.getValorfijo(idCredito);
+		return valorpagomensual;
+		}
+	
+	//public Integer valorUltimopago (Integer idCredito) {
+		//Integer valorUltimopago= ipagosRepo.getUltimoPago(idCredito);
+		//return valorUltimopago;
+	//	}
+	public Pagos  registroPagos(Integer idCredito) {
+		Pagos valoresPagos = ipagosRepo.getPagos(idCredito);
+		return valoresPagos;
 		}
 		
-	public Integer ConsultaSaldo ( Integer id_credito ){
+	/*public Integer ConsultaSaldo ( Integer id_credito ){
 		Integer UltimoSaldo = ipagosRepo.getSaldo(id_credito);
 		return UltimoSaldo;
 	}
@@ -42,9 +52,7 @@ public class PagosService {
 		}
 		*/
 		
-	public void Eliminar (Pagos pagos) {
-		ipagosRepo.delete(pagos);
-	}
+
 	public void actualizar (Pagos pagos) {
 		ipagosRepo.save(pagos);	
 	}
