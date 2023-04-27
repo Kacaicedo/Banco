@@ -28,16 +28,18 @@ public class PagosController {
 		Pagos valoresPagos = pagosService.registroPagos(pagos.getIdCr());
 		int suma = valoresPagos.getValor() + pagos.getValor();
 		int resta = valoresPagos.getValor() + pagos.getValor() - cuotaMensual;
+		int pagoMayorValor = pagos.getValor()/ cuotaMensual;
+		
 
 		String messeger = null;
 		// para actualizar una cuota
-		if (valoresPagos.getValor() < cuotaMensual && suma < cuotaMensual || suma == cuotaMensual) {
+		if (valoresPagos.getValor().intValue()< cuotaMensual.intValue() && suma < cuotaMensual.intValue() || suma == cuotaMensual.intValue()) {
 			valoresPagos.setValor(suma);
 			pagosService.actualizar(valoresPagos);
 			return ResponseEntity.status(HttpStatus.OK).body("actualizacion realizada");
 		}
 		// IF PARA ACTUALIZAR Y PAGAR UNA CUOTA
-		if (valoresPagos.getValor() < cuotaMensual && suma > cuotaMensual) {
+		if (valoresPagos.getValor().intValue() < cuotaMensual.intValue() && suma > cuotaMensual.intValue()) {
 			valoresPagos.setValor(cuotaMensual);
 			pagosService.actualizar(valoresPagos);
 
@@ -48,14 +50,19 @@ public class PagosController {
 		// IF PARA PAGAR VARIAS CUOTAS AL TIEMPO DEBO UTILIZAR UN BUCLE WHILE PARA QUE
 		// CADA QUE LA CUOTA SEA DE 3
 		// Y EL VALOR INGRESADO SEA MAYOR EL SISTEMA GENERE UN PAGO NUEVO
-		if (valoresPagos.getValor() == cuotaMensual && pagos.getValor() > cuotaMensual) {
-			while (valoresPagos.getValor() > cuotaMensual) {
-				{
-					pagos.setValor(cuotaMensual);
-					pagosService.crear(pagos);
-					return ResponseEntity.status(HttpStatus.OK).body("pago exitoso2");
-				}
-			}
+		
+		if (valoresPagos.getValor().intValue() == cuotaMensual.intValue() && pagos.getValor().intValue() > cuotaMensual.intValue()) {
+			for (int i = 1; i <= pagoMayorValor; i++) {
+		      System.out.println(i);
+		      pagos.setValor(cuotaMensual);
+		      // puse la condicion porque el id se estaba repitiendo 
+		      //esta linea significa que si el id es null genere otro pago 
+		      pagos.setId(null);
+			      pagosService.crear(pagos);
+			 }
+				
+				//return ResponseEntity.status(HttpStatus.OK).body("pago nuevo");    
+
 		}
 		pagosService.crear(pagos);
 		return ResponseEntity.status(HttpStatus.OK).body("pago nuevo ");
